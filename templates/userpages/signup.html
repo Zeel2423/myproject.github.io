@@ -1,0 +1,267 @@
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>Coaching Classes</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'usertheme/images/81LRplCMQWL._SY450_.jpg' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'usertheme/images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/style.css' %}">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/versions.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/custom.css' %}">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="{% static 'usertheme/js/modernizer.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version"> 
+{% include "userpages/header.html" %}  
+
+	<!-- Modal -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header tit-up">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Customer Login</h4>
+			</div>
+			<div class="modal-body customer-box">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
+					<li><a href="#Registration" data-toggle="tab">Registration</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="Login">
+						<form role="form" class="form-horizontal">
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email1" placeholder="Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="exampleInputPassword1" placeholder="Email" type="email">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+										Submit
+									</button>
+									<a class="for-pwd" href="javascript:;">Forgot your password?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="Registration">
+						<form role="form" class="form-horizontal">
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" placeholder="Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email" placeholder="Email" type="email">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="mobile" placeholder="Mobile" type="email">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="password" placeholder="Password" type="password">
+								</div>
+							</div>
+							<div class="row">							
+								<div class="col-sm-10">
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Save &amp; Continue
+									</button>
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- LOADER -->
+	<div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END LOADER -->	
+
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Signup<span class="m_1">plz Signup</span></h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Signup Here</h3>
+                
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form">
+                        <div id="message"></div>
+                        {% if messages %}
+						{% for msg in messages %}
+						<div class="alert alert-{{msg.level_tag}}" role="alert">
+							<h1>{{msg.message}}</h1>
+						</div>
+						{% endfor %}
+						{% endif %}
+
+
+                        
+                        <form id="contactform" class="" action="signup_addprocess" name="contactform" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="row row-fluid">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Name</lable><input type="text" name="txt1" id="first_name" class="form-control" required="" pattern="^[A-Za-z -]+$" title="Please Enter Only Characters" minlength="3" placeholder="Name">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <!-- <input type="redio" name="txt2" id="Gender" class="form-control" required=""  placeholder="Gender"> -->
+                                    <lable style="color:white;">Gender</lable><br>
+                                    <lable style="color:white;"> Male </lable><input type="radio" name="txt2" value="Male" required>
+                                   <lable style="color:white;"> Female </lable><input type="radio" name="txt2" value="Female"><br><br>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Date of Birth</lable>
+                                    <input type="date" name="txt3" id="first_name" class="form-control" required=""  placeholder="birthdate">
+                                </div>
+                                
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Email</lable>
+                                    <input type="email" name="txt4" id="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">password</lable>
+                                    <input type="password" name="txt5" id="password" class="form-control" required="" name="txt3" placeholder="Password" placeholder="password">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Contact number</lable>
+                                    <input type="text" name="txt6" id="contact" class="form-control" pattern="[0-9]{10}" title="please enter valid 10 digit's Mobile Number"placeholder="Contact Number">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Parant number</lable>
+                                    <input type="text" name="txt7" id="confirm_password" class="form-control"  pattern="[0-9]{10}" title="please enter valid 10 digit's Mobile Number"   required="" placeholder="perent Number">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Address</lable>
+                                    <textarea type="text" name="txt8" id="confirm_password" class="form-control"  placeholder="Address"></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <lable style="color:white;">Choose your image</lable>
+                                    <input type="file" name="txt9" id="confirm_password" class="form-control"  accept="image/*" required>
+                                </div>
+                                <div class="text-center pd">
+                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                                </div>
+                                <a class="for-pwd" href="login"><h3><lable style="color:white;">Login</lable></h3></a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+				<div class="col-xl-6 col-md-12 col-sm-12">
+					<div class="map-box">
+						<div id="custom-places" class="small-map"></div>
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+	<div class="parallax section dbcolor">
+        <div class="container">
+            <div class="row logos">
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_01.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_02.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_03.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_04.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_05.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'usertheme/images/logo_06.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">SmartEDU</a> Design By : <a href="https://html.design/">html design</a></p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'usertheme/js/all.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCKjLTXdq6Db3Xit_pW_GK4EXuPRtnod4o"></script>
+	<!-- Mapsed JavaScript -->
+	<script src="{% static 'usertheme/js/mapsed.js' %}"></script>
+	<script src="{% static 'usertheme/js/01-custom-places-example.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'usertheme/js/custom.js' %}"></script>
+{% include "userpages/footer.html" %}
+</body>
+</html>

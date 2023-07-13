@@ -1,0 +1,11 @@
+{% load static %} 
+ 
+{% include "userpages/header.html" %}  
+
+Hi {{ request.session.user_email }}
+    {{ request.COOKIES.user_email }}
+    <a href="changepassword">changepassword</a>
+
+    <a href="userlogout">Logout</a>
+    
+{% include "userpages/footer.html" %}

@@ -1,0 +1,13 @@
+<form action="/myadmin/updatedata" method="post">
+    {% csrf_token %}
+<h1>Edit</h1>
+    <input type="hidden" name="txt1" value="{{mydata.0}}">
+
+    name:<input type="text" name="txt2" value="{{mydata.1}}" required>
+    Standerd:<input type="text" name="txt3" value="{{mydata.2}}">
+    Fees:<input type="text" name="txt4" value="{{mydata.3}}">
+    
+    
+    <input type="submit">
+</form>
+

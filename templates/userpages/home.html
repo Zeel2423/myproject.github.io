@@ -1,0 +1,533 @@
+{% load static %}  
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>Coaching Classes</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'usertheme/images/81LRplCMQWL._SY450_.jpg' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'usertheme/images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/style.css' %}">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/versions.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'usertheme/css/custom.css' %}">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="{% static 'usertheme/js/modernizer.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version"> 
+    {% include "userpages/header.html" %}    
+
+	<!-- Modal -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header tit-up">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Customer Login</h4>
+			</div>
+			<div class="modal-body customer-box">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li><a class="active" href="login" data-toggle="tab">Login</a></li>
+					<li><a href="signup" data-scroll="tab">Signup</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="login">
+						<form role="form" class="form-horizontal" action="/loginpageprocess" method="post"  >
+                            {% csrf_token %}
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" name="txt1" id="email1"  required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter valid email id" placeholder="email" type="email">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" name="txt2" id="exampleInputPassword1"  placeholder="Password" maxlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number,one uppercase ,lowercase letter, and at least 8 or more Characters" required type="password">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+										Submit
+									</button>
+									<a class="for-pwd" href="forgotpassword">Forgot your password?</a>
+                                    <a class="for-pwd" href="changepassword">Change your password?</a>
+									<a class="for-pwd" href="signup">Sign-Up?</a>
+
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="Signup">
+						<form role="form" class="form-horizontal" action="signup_addprocess" method="post"  >
+                            {% csrf_token %}
+							<div class="form-group">
+								<div class="col-sm-12">
+									Name<input class="form-control" name="txt1" value="name" placeholder="Name" pattern="^[A-Za-z -]+$" title="Please Enter Only Characters" minlength="3" required type="text">
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="col-sm-12">
+                                    Gender<br>
+                                    Male &nbsp;&nbsp;<input type="radio" name="txt2" value="Male" required>	&nbsp;&nbsp;
+                                    Female &nbsp;&nbsp;<input type="radio" name="txt2" value="Female">								
+                                </div>
+							</div>
+
+                            <div class="form-group">
+								<div class="col-sm-12">
+									BirthDate<input class="form-control" name="txt3" id="Date" required  placeholder="Birthdate" type="date">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-12">
+									Email<input class="form-control" name="txt4" id="email" required  placeholder="Email" type="email">
+								</div>
+							</div>
+
+                            <div class="form-group">
+								<div class="col-sm-12">
+									Password<input class="form-control" name="txt5" id="password" required maxlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number,one uppercase ,lowercase letter, and at least 8 or more Characters"  placeholder="Password" type="password">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-12">
+									Mobile<input class="form-control" name="txt6" id="mobile" pattern="[0-9]{10}" title="please enter valid 10 digit's Mobile Number" placeholder="Mobile" required type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									Parent Mobile<input class="form-control" name="txt7" id="Parent mobile" placeholder="Parent mobile" required pattern="[0-9]{10}" title="please enter valid 10 digit's Mobile Number" type="text">
+								</div>
+							</div>
+
+                            <div class="form-group">
+								<div class="col-sm-12">
+                                    Address<textarea type="text" name="txt8" id="confirm_password" class="form-control"  placeholder="Address"></textarea>
+								</div>
+							</div>
+
+                            <div class="form-group">
+								<div class="col-sm-12">
+									Your Photo<input class="form-control" name="txt9" id="Parent mobile"  accept="image/*" required  type="file">
+								</div>
+							</div>
+
+
+							<div class="row">							
+								<div class="col-sm-10">
+									<button type="button" value="SEND" class="btn btn-light btn-radius btn-brd grd1">
+										Save &amp; Continue
+									</button>
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Cancel
+                                    </button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+
+    <!-- LOADER -->
+	<div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END LOADER -->	
+	
+	
+	<div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleControls" data-slide-to="1"></li>
+			<li data-target="#carouselExampleControls" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="carousel-item active">
+				<div id="home" class="first-section" style="background-image:url('http://127.0.0.1:8000/static/usertheme/images/slider-01.jpg');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-right">
+									<div class="big-tagline">
+										<h2><strong> ANGEL </strong> Group Tution </h2>
+										<p class="lead">We provide a good environmet to students with classes. So that the student can move forward in life  with good thoughts and skills.</p>
+											<a href="contact" class="hover-btn-new"><span>Contact Us</span></a>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<div class="carousel-item">
+				<div id="home" class="first-section" style="background-image:url('http://127.0.0.1:8000/static/usertheme/images/slider-02.jpg');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-left">
+									<div class="big-tagline">
+										<h2 data-animation="animated zoomInRight">ANGEL <strong>Group Tution</strong></h2>
+										<p class="lead" data-animation="animated fadeInLeft">We teach English and Gujarati midium both class 1st to 10th and 11th & 12th Science commerce both.</p>
+											<a href="contact" class="hover-btn-new"><span>Contact Us</span></a>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<div class="carousel-item">
+				<div id="home" class="first-section" style="background-image:url('http://127.0.0.1:8000/static/usertheme/images/slider-03.jpg');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-center">
+									<div class="big-tagline">
+										<h2 data-animation="animated zoomInRight"><strong>ANGEL</strong> Group Tution</h2>
+										<p class="lead" data-animation="animated fadeInLeft">We will provide study meterial related study.</p>
+											<a href="contact" class="hover-btn-new"><span>Contact Us</span></a>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<!-- Left Control -->
+			<a class="new-effect carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				<span class="fa fa-angle-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+
+			<!-- Right Control -->
+			<a class="new-effect carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				<span class="fa fa-angle-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>About</h3>
+                    <p class="lead">Angel Coaching Classes is a place where teachers, students and parents work together to achieve prosperous and secure future in academics for every student.</p>
+                </div>
+            </div><!-- end title -->
+        
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="message-box">
+                        <h4>2018 BEST Angel Coaching Classes</h4>
+                        <h2>Welcome to Angel Coaching Classes</h2>
+                        <p>They constantly juggle between the school syllabus and exam syllabus. Coaching centres help students improve their time management skills by providing appropriate guidance. They learn the most efficient method of dividing their time to cover the entire exam syllabus.</p>
+
+                        
+                        <a href="about" class="hover-btn-new orange"><span>Learn More</span></a>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+				
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="post-media wow fadeIn">
+                        <img src="{% static 'usertheme/images/about_02.jpg' %}" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+			</div>
+			<div class="row align-items-center">
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="post-media wow fadeIn">
+                        <img src="{% static 'usertheme/images/about_03.jpg' %}" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+				
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="message-box">
+                        <h2>It allows students to implement skills learned during specific classes.</h2>
+                        <p>This process can help develop individuals across a wide range of needs and can even benefit them on a personal level. Coaching has been known to boost confidence, improve work performance, and build effective communication skills. The benefits can be even more vast and specific to an individual.</p>
+
+                        <a href="about" class="hover-btn-new orange"><span>Learn More</span></a>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+				
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <section class="section lb page-section">
+		<div class="container">
+			 <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Our history</h3>
+                    <p class="lead">24x7 student support so that you don’t have to get stuck at any point.</p>
+                </div>
+            </div><!-- end title -->
+			<div class="timeline">
+				<div class="timeline__wrap">
+					<div class="timeline__items">
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-01">
+								<h2>2018</h2>
+								<p>Stay ahead of the curve with the expert History tutorials offered by SSSi.
+                                    Strengthen your fundamentals of History.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-02">
+								<h2>2015</h2>
+								<p>Master the subject and get the best class 12 CBSE board results.
+                                    Fill up the registration form to book your FREE demo tutorial TODAY!</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-03">
+								<h2>2014</h2>
+								<p>Memorising facts accurately without any external guidance can be a task, especially when you have to manage other subjects as well.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-04">
+								<h2>2012</h2>
+								<p>Scoring well in class 12 examinations can help you build a solid ground for your higher education.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-01">
+								<h2>2010</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
+									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-02">
+								<h2>2007</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
+									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-03">
+								<h2>2004</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
+									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-04">
+								<h2>2002</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
+									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="section cl">
+		<div class="container">
+			<div class="row text-left stat-wrap">
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-study"></i></span>
+					<p class="stat_count">12000</p>
+					<h3>Students</h3>
+				</div><!-- end col -->
+
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-online"></i></span>
+					<p class="stat_count">240</p>
+					<h3>Courses</h3>
+				</div><!-- end col -->
+
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-years"></i></span>
+					<p class="stat_count">55</p>
+					<h3>Years Completed</h3>
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</div><!-- end section -->
+
+    <div id="plan" class="section lb">
+        <div class="container">
+            
+            
+
+            <hr class="invis">
+
+            
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('http://127.0.0.1:8000/static/usertheme/images/parallax_04.jpg');">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Testimonials</h3>
+                
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="testi-carousel owl-carousel owl-theme">
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_01.png' %}" alt="" class="img-fluid">
+                                <h4>James Fernando </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
+                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_02.png' %}" alt="" class="img-fluid">
+                                <h4>Jacques Philips </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
+                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_03.png' %}" alt="" class="img-fluid ">
+                                <h4>Venanda Mercy </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
+                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_01.png' %}" alt="" class="img-fluid">
+                                <h4>James Fernando </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
+                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_02.png' %}" alt="" class="img-fluid">
+                                <h4>Jacques Philips </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
+                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+							<div class="testi-meta">
+                                <img src="{% static 'usertheme/images/testi_03.png' %}" alt="" class="img-fluid">
+                                <h4>Venanda Mercy </h4>
+                            </div>
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
+                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div><!-- end testimonial -->
+                    </div><!-- end carousel -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div class="parallax section dbcolor">
+        <div class="container">
+            
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">Angel Coaching Classes</a> </p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'usertheme/js/all.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'usertheme/js/custom.js' %}"></script>
+	<script src="{% static 'usertheme/js/timeline.min.js' %}"></script>
+	<script>
+		timeline(document.querySelectorAll('.timeline'), {
+			forceVerticalMode: 700,
+			mode: 'horizontal',
+			verticalStartPosition: 'left',
+			visibleItems: 4
+		});
+	</script>
+    {% include "userpages/footer.html" %}    
+
+</body>
+</html>

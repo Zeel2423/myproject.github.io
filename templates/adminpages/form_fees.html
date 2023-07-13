@@ -1,0 +1,248 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Form Validation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'admintheme/assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'admintheme/assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admintheme/assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admintheme/assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+</head>
+
+<body>
+
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        {% include "adminpages/header.html" %}
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        {% include "adminpages/sidebar.html" %}
+         <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+       
+        <div class="dashboard-wrapper">
+            <div class="container-fluid  dashboard-content">
+                <!-- ============================================================== -->
+                <!-- pageheader -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">Fees Form</h2>
+                            <p class="pageheader-text"></p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Fees Form</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end pageheader -->
+                <!-- ============================================================== -->
+             
+                    <div class="row">
+                        <!-- ============================================================== -->
+                        <!-- validation form -->
+                        <!-- ============================================================== -->
+                                                <!-- ============================================================== -->
+                    </div>
+                    <div class="row">
+                        <!-- ============================================================== -->
+                                               <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- horizontal form -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12S">
+                            <div class="card">
+                                <h5 class="card-header"></h5>
+                                <div class="card-body">
+
+                                    {% if messages %}
+                                    {% for msg in messages %}
+                                    <div class="alert alert-{{msg.level_tag}}" role="alert">
+                                        {{msg.message}}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    <form id="form"  action="form_fees_addprocess" method="post" >
+                                        {% csrf_token %}    
+
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputStanderdID" class="col-3 col-lg-2 col-form-label text-right"><b>Date</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <input id="txt2" name="txt2" type="date" required="" data-parsley-type="Date" placeholder="Date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputStudentID" class="col-3 col-lg-2 col-form-label text-right"><b>Amount</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <input id="txt3" name="txt3" type="text" required="" data-parsley-type="text" placeholder="Number" pattern="[0-9]{3,5}" title="please enter valid Amount" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputPaymentMode" class="col-3 col-lg-2 col-form-label text-right"><b>Method</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <!--<input id="txt4" name="txt4" type="text" required="" data-parsley-type="text" placeholder="Method" class="form-control"> -->
+                                                <div class="custom-controls-stacked">
+                                                    <label class="custom-control custom-radio">
+                                                        <input id="txt5" name="txt4" type="radio" data-parsley-multiple="groups" value="Cash" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input"><span class="custom-control-label">Cash</span>
+                                                    </label>
+                                                    <label class="custom-control custom-radio">
+                                                        <input id="txt5" name="txt4" type="radio" data-parsley-multiple="groups" value="Cheque" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input"><span class="custom-control-label">Cheque</span>
+                                                    </label>
+                                                    <label class="custom-control custom-radio">
+                                                        <input id="txt5" name="txt4" type="radio" data-parsley-multiple="groups" value="UPI" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input"><span class="custom-control-label">UPI</span>
+                                                    </label>
+                                                    
+                                                    <div id="error-container1"></div>
+                                                </div>    
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputPaidAmount" class="col-3 col-lg-2 col-form-label text-right"><b>Admission Id</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <select name="txt5" class="form-control">
+                                                    {% for i in mydata %}
+
+                                                        <option value="{{i.0}}">{{i.1}}</option>
+
+                                                    {% endfor %} 
+                                                </select> 
+                                            </div>                                                    
+                                        </div>
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputPaidAmount" class="col-3 col-lg-2 col-form-label text-right"><b>Student Id</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <select name="txt6" class="form-control">
+                                                    {% for i in mydata1 %}
+
+                                                        <option value="{{i.0}}">{{i.1}}</option>
+
+                                                    {% endfor %} 
+                                                </select> 
+                                            </div>                                                    
+                                        </div>
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputPaidAmount" class="col-3 col-lg-2 col-form-label text-right"><b>Standerd Id</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <select name="txt7" class="form-control">
+                                                    {% for i in mydata2 %}
+
+                                                        <option value="{{i.0}}">{{i.1}}</option>
+
+                                                    {% endfor %} 
+                                                </select> 
+                                            </div>                                                    
+                                        </div>
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputDate" class="col-3 col-lg-2 col-form-label text-right"><b>Actual Amount</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <input id="txt7" name="txt9" type="text" required="" data-parsley-type="text" placeholder="Amount" pattern="[0-9]{3,5}" title="please enter valid Amount" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputDueAmount" class="col-3 col-lg-2 col-form-label text-right"><b>Due Amount</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <input id="txt6" name="txt8" type="text" required="" data-parsley-type="text" placeholder="Amount" pattern="[0-9]{3,5}" title="please enter valid Amount" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            
+                                            <label for="inputDate" class="col-3 col-lg-2 col-form-label text-right"><b>Paid Amount</b></label>
+                                            <div class="col-9 col-lg-10">
+                                                <input id="txt7" name="txt9" type="text" required="" data-parsley-type="text" placeholder="Amount" pattern="[0-9]{3,5}" title="please enter valid Amount" class="form-control">
+                                            </div>
+                                        </div>
+
+                                       
+                                        
+                                        <div class="row pt-2 pt-sm-5 mt-1">
+                                            <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                                                <label class="be-checkbox custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Remember me</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-6 pl-0">
+                                                <p class="text-right">
+                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                                                    <button class="btn btn-space btn-secondary">Reset</button>
+                                                    <button type="view" class="btn btn-space btn-primary">View</button>
+                                                    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end horizontal form -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <div class="row">
+                        <!-- ============================================================== -->
+                        <!-- valifation types -->
+                        <!-- ============================================================== -->
+                                               <!-- ============================================================== -->
+                    </div>
+           
+            </div>
+            <!-- ============================================================== -->
+            {% include "adminpages/footer.html"%}
+
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static 'admintheme/assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'admintheme/assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'admintheme/assets/vendor/slimscroll/jquery.slimscroll.js ' %}"></script>
+    <script src="{% static 'admintheme/assets/vendor/parsley/parsley.js' %}"></script>
+    <script src="{% static 'admintheme/assets/libs/js/main-js.js' %}"></script>
+    
+
+</body>
+ 
+</html>
